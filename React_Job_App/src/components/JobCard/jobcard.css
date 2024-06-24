@@ -1,0 +1,32 @@
+.custom-link{
+    text-decoration: none; /* Remove underlines */
+    color: #333; 
+    
+}
+
+.job-card{
+    cursor:pointer ;
+    box-shadow:10px 10px 10px rgba(0, 0, 0, 0.1);
+    overflow:hidden; 
+    transition: transform 0.2s ease-in-out;
+   
+}
+
+.job-card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+    
+  }
+
+.card-title {
+    font-size: 1rem; /* Adjust font size */
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    text-decoration-color: blue;
+  }
+  .card-name{
+    font-size: 1rem;
+  }
+  .job-card-salary{
+    background-color: #7db1fe !important;
+  }

@@ -1,0 +1,17 @@
+{
+  "profiles": [],
+  "users": [
+    {
+      "id": "63f1",
+      "name": "Riki",
+      "email": "riki@gmail.com",
+      "password": "Riki@123"
+    },
+    {
+      "id": "39c8",
+      "name": "Varun C",
+      "email": "varun@gmail.com",
+      "password": "Varun@123"
+    }
+  ]
+}

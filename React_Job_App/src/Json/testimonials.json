@@ -1,0 +1,27 @@
+[
+  {
+      "id": 1,
+      "name": "John Doe",
+      "image": "john_doe.jpg",
+      "quote": "I found my dream job through this website!"
+  },
+  {
+      "id": 2,
+      "name": "Jane Smith",
+      "image": "jane_smith.jpg",
+      "quote": "Great platform! Highly recommended."
+  },
+  {
+      "id": 3,
+      "name": "Alice Johnson",
+      "image": "alice_johnson.jpg",
+      "quote": "The job search process was so easy and efficient!"
+  },
+  {
+      "id": 4,
+      "name": "Michael Brown",
+      "image": "michael_brown.jpg",
+      "quote": "Thanks to this website, I landed my dream role in no time."
+  }
+
+]
