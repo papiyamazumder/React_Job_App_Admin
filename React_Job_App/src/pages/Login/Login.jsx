@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Auth/AuthProvider'; // Adjust import path as needed
 import {validateLogin,loginUser} from '../../Api/usersApi';
+import { AuthProvider,useAuth } from '../../Auth/AuthProvider';
 import './Login.css';
 
 const Login = () => {
@@ -15,14 +15,12 @@ const Login = () => {
     e.preventDefault();
     try {
       const isValidLogin = await validateLogin(email, password);
-      if (isValidLogin) {
-        const userData = await loginUser(email);
-        localStorage.setItem('user', JSON.stringify(userData)); // Store user data in local storage if needed
-        console.log(userData)
-        navigate('/jobs'); // Redirect to home or dashboard after successful login
-      } else {
-        setError('Invalid email or password. Please try again.');
-      }// Redirect to home or dashboard after successful login
+        if (isValidLogin) {
+          login();
+          navigate('/jobs'); // Redirect to jobs page after successful login
+        } else {
+          setError('Invalid email or password. Please try again.');
+        }
     } catch (error) {
       console.error('Login failed:', error);
       setError('Login failed. Please try again.'); // Handle login error

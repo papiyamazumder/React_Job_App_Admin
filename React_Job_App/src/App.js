@@ -19,10 +19,11 @@ import Logout from "./pages/Logout/Logout.jsx";
 import { IoLogOut } from "react-icons/io5";
 import Display from "./components/Profile/Display.js";
 
-
+ 
+ 
 function NavbarLinks() {
   const { isAuthenticated, logout } = useAuth();
-
+ 
   return (
     <Nav className="justify-content-end" variant="underline">
       <Nav.Link as={Link} to="/jobs" className="nav-link-icons">
@@ -48,10 +49,10 @@ function NavbarLinks() {
     </Nav>
   );
 }
-
+ 
 function App() {
   const [jobs, setJobs] = useState(CompanyJobs);
-
+ 
   return (
     <div className="App">
       <AuthProvider>
@@ -64,14 +65,14 @@ function App() {
               <NavbarLinks />
             </Container>
           </Navbar>
-
+ 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/registration" element={<Form />} />
             <Route path="/logout" element={<Logout />} />
-          
+         
           <Route element={<PrivateRoute/>}>
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/profile" element={<Display/>} />
@@ -84,5 +85,6 @@ function App() {
     </div>
   );
 }
-
+ 
 export default App;
+ 

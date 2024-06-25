@@ -7,7 +7,7 @@ import { FaFacebookSquare, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoWhatsapp, IoPerson } from "react-icons/io5";
 
-function Home() {
+function Home({isAuthenticated}) {
   return (
     <div className="home-container">
       <section className="hero-section">
@@ -15,7 +15,11 @@ function Home() {
           <h1 className="hero-title">Find Your Dream Job Today</h1>
           <p className="hero-description">Explore thousands of job opportunities from top companies.</p>
           <div className="home-hero-buttons">
-            <a href="/jobs" className="btn home-btn-primary">Browse Jobs</a>
+          {isAuthenticated ? (
+              <a href="/jobs" className="btn home-btn-primary">Browse Jobs</a>
+            ) : (
+              <a href="/login" className="btn home-btn-primary">Browse Jobs</a>
+            )}
           </div>
         </div>
       </section>
