@@ -61,6 +61,7 @@ export const loginUser = async (email) => {
 
 //#endregion
 
+//#region Profile Api
 export const getUserProfile = async (email) => {
   try {
     const response = await instance.get(`/profiles?email=${email}`);
@@ -69,6 +70,36 @@ export const getUserProfile = async (email) => {
     throw error; // Handle error in component where this function is called
   }
 }
+export const userProfile=async(formData)=>{
+  try {
+    const response = await instance.post('/profiles', formData);
+    return response.data;  // Assuming JSON Server returns created user data
+  } catch (error) {
+    console.error('Error in Profile user:', error);
+    throw error;  // Optionally handle error as needed
+  }
+}
+//#endregion
+
+//#region Jobs Api
+export const getJobs= async ()=>{
+  try{
+    const response = await instance.get(`/company`);
+    return response.data;
+  }catch (error){
+    throw error
+  }
+}
+
+export const getJobById= async(id)=>{
+  try {
+    const response = await instance.get(`/company?id=${id}`);
+    return response.data[0]; // Assuming you fetch a single profile based on email
+  } catch (error) {
+    throw error; // Handle error in component where this function is called
+  }
+}
+//#endregion
 
 
 

@@ -88,7 +88,7 @@ export default function Form() {
             setError(false);
       
             // Optionally, you can store an identifier or token in localStorage to indicate registration
-            localStorage.setItem('registered', 'true');
+            
       
             // Navigate to login page (example using react-router-dom)
             navigate('/login');

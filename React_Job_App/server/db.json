@@ -211,7 +211,94 @@
       }
     }
   ],
-  "profiles": [],
+  "profiles": [
+    {
+      "id": "a885",
+      "basicDetails": {
+        "profilePhoto": null,
+        "fullname": "Varun C",
+        "gender": "Male",
+        "email": "varun@gmail.com",
+        "address": "2258,shettikere,durgakeri,honnavara",
+        "city": "Honnavar",
+        "state": "Karnataka",
+        "mobileNumber": "0843195526",
+        "previewUrl": null
+      },
+      "educationDetails": {
+        "coursename": "B.Tech/B.E",
+        "specialization": "Information Science and Engineering",
+        "collegename": "Dayananda Sagar College of Engineering",
+        "cgpa": "9",
+        "previewUrl": null
+      },
+      "skills": {
+        "skills": "C, Java, C#, React",
+        "previewUrl": null
+      },
+      "projects": {
+        "projectname": "",
+        "projectdetails": "",
+        "projectskills": "",
+        "projecturl": ""
+      },
+      "certifications": {
+        "certificationname": "",
+        "certificateurl": ""
+      },
+      "experience": {
+        "companyname": "",
+        "designation": "",
+        "totalExperienceMonths": "",
+        "totalExperienceYears": "",
+        "workdescription": "",
+        "typeofexperience": ""
+      }
+    },
+    {
+      "id": "bd42",
+      "basicDetails": {
+        "profilePhoto": "C:\\fakepath\\Leave application.png",
+        "fullname": "Riki",
+        "gender": "Female",
+        "email": "riki@gmail.com",
+        "address": "2258,shettikere,durgakeri,honnavara",
+        "city": "Honnavar",
+        "state": "Karnataka",
+        "mobileNumber": "8431955266",
+        "previewUrl": null
+      },
+      "educationDetails": {
+        "coursename": "B.Tech/B.E",
+        "specialization": "Information Science and Engineering",
+        "collegename": "Dayananda Sagar College of Engineering",
+        "cgpa": "9",
+        "previewUrl": null
+      },
+      "skills": {
+        "skills": "C, Java, C#, React",
+        "previewUrl": null
+      },
+      "projects": {
+        "projectname": "",
+        "projectdetails": "",
+        "projectskills": "",
+        "projecturl": ""
+      },
+      "certifications": {
+        "certificationname": "",
+        "certificateurl": ""
+      },
+      "experience": {
+        "companyname": "",
+        "designation": "",
+        "totalExperienceMonths": "",
+        "totalExperienceYears": "",
+        "workdescription": "",
+        "typeofexperience": ""
+      }
+    }
+  ],
   "users": [
     {
       "id": "5de6",
