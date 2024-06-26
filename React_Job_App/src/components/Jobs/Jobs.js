@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import SearchJob from '../SearchBar/searchJob';
 import { SideBar } from '../Sidebar/sidebar';
 import axios from 'axios';
+import { getJobs } from '../../Api/usersApi'; // Adjust import path as per your project structure
 
 function Jobs() {
   const [jobs, setJobs] = useState([]); // State to store all jobs
@@ -14,12 +15,12 @@ function Jobs() {
     fetchJobs(); // Fetch jobs data on component mount
   }, []);
 
-  // Function to fetch jobs data from company.json
+  // Function to fetch jobs data
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('/server/company.json'); // Adjust path as per your project structure
-      setJobs(response.data); // Set jobs state with fetched data
-      setFilteredJobs(response.data); // Initialize filteredJobs with all jobs on first load
+      const jobsData = await getJobs(); // Call getJobs function from API
+      setJobs(jobsData); // Set jobs state with fetched data
+      setFilteredJobs(jobsData); // Initialize filteredJobs with all jobs on first load
     } catch (error) {
       console.error('Error fetching jobs:', error);
     }

@@ -3,15 +3,15 @@ import { Accordion,Form } from 'react-bootstrap';
 import './profileform.css'
 import {  Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { getUserProfile,userProfile } from '../../Api/usersApi';
 
-
-const ProfileForm = ({userId, onCreate, onCancel }) => {
+const ProfileForm = ({userEmail, onCreate, onCancel }) => {
   const [formData, setFormData] = useState({
     basicDetails: {
       profilePhoto: null,
       fullname: '',
       gender: '',
-      email: '',
+      email: userEmail,
       address: '',
       city:'',
       state:'',
@@ -48,12 +48,17 @@ const ProfileForm = ({userId, onCreate, onCancel }) => {
   });
 
    useEffect(() => {
-    
-    const storedFormData = JSON.parse(localStorage.getItem('details-${userId}'));
-    if (storedFormData) {
-      setFormData(storedFormData);
-    }
-  }, [userId]);
+      if(userEmail){
+        getUserProfile(userEmail).then((userProfile)=>{
+          if (userProfile){
+            setFormData(userProfile)
+          }
+        }).catch((error)=>{
+          console.error("Error fetching user profile",error);
+        })
+      }
+    },[userEmail]
+    );
 
   const handleChange = (e, section) => {
     const { name, value, files } = e.target;
@@ -113,11 +118,17 @@ const ProfileForm = ({userId, onCreate, onCancel }) => {
 };
 
 
-  const handleSubmit = e => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
-    localStorage.setItem('details-${userId}', JSON.stringify(formData));
-    onCreate();
+    try{
+      const response= await userProfile(formData);
+      console.log("Profile Created",response.data);
+      onCreate();
+    }catch (error) {
+      console.error('Error saving profile:', error);
+      // Handle error appropriately
+    }
+    
   };
 
   const handleCancel = () => {
@@ -127,7 +138,7 @@ const ProfileForm = ({userId, onCreate, onCancel }) => {
         profilePhoto: null,
         fullname: '',
         gender: '',
-        email: '',
+        email: userEmail,
         address: '',
         city:'',
         state:'',

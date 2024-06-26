@@ -6,8 +6,9 @@ import { AiTwotoneMail } from "react-icons/ai";
 import { GrPhone } from "react-icons/gr";
 import { IoLocationOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { getUserProfile } from '../../Api/usersApi';
 
-const ProfileDisplay = ({ userId,onEdit }) => {
+const ProfileDisplay = ({ userEmail,onEdit }) => {
   const [formData, setFormData] = useState({
     basicDetails: {
       profilePhoto: null,
@@ -50,15 +51,25 @@ const ProfileDisplay = ({ userId,onEdit }) => {
   });
   const navigate = useNavigate();
   useEffect(() => {
-    
-    const storedFormData = JSON.parse(localStorage.getItem('details-${userId}'));
-    console.log('Stored Form Data:', storedFormData); 
+    const fetchUserProfile = async () => {
+      try {
+        // Replace with actual API call to fetch user profile based on userEmail
+        const userProfileData = await getUserProfile(userEmail);
+        if (userProfileData) {
+          setFormData(userProfileData);
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+        // Handle error fetching user profile
+      }
+    };
 
+    if (userEmail) {
+      fetchUserProfile();
+    }
+  }, [userEmail]);
     
-    if (storedFormData ) {
-      setFormData(storedFormData);
-    } 
-  }, [userId]);
+
 
   const handleSubmit = () => {
     navigate('/submit');

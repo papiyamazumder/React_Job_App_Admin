@@ -77,7 +77,7 @@ function App() {
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/profile" element={<Display/>} />
             <Route path="/submit" element={<ApplyFormSubmit />} />
-            <Route path="/job/:id" element={<JobDetails companyData={jobs} />} />
+            <Route path="/job/:id" element={<JobDetails/>} />
           </Route>
           </Routes>
         </Router>
