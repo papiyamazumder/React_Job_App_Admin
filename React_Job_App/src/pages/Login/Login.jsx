@@ -1,3 +1,4 @@
+// Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validateLogin, loginUser } from "../../Api/usersApi";
@@ -12,19 +13,19 @@ const Login = () => {
   const { login } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, adminLogin) => {
     e.preventDefault();
 
     try {
       const isValidLogin = await validateLogin(email, password);
       if (isValidLogin) {
         const userData = await loginUser(email);
-        if (userData.role === "user" && !isAdmin) {
+        if (userData.role === "user" && !adminLogin) {
           login(userData);
-          navigate("/jobs");
-        } else if (userData.role === "admin" && isAdmin) {
+          navigate("/jobs"); // Navigate to jobs page for regular user
+        } else if (userData.role === "admin" && adminLogin) {
           login(userData);
-          navigate("/admin-dashboard");
+          navigate("/admin-dashboard"); // Navigate to admin dashboard for admin
         } else {
           setError("Invalid user role for selected login option.");
         }
@@ -41,12 +42,14 @@ const Login = () => {
     navigate("/registration");
   };
 
-  const handleLoginAsAdmin = () => {
+  const handleLoginAsAdmin = async () => {
     setIsAdmin(true);
+    await handleSubmit({ preventDefault: () => {} }, true); // Pass true to indicate admin login
   };
 
-  const handleLoginAsUser = () => {
+  const handleLoginAsUser = async () => {
     setIsAdmin(false);
+    await handleSubmit({ preventDefault: () => {} }, false); // Pass false to indicate user login
   };
 
   return (
@@ -61,7 +64,7 @@ const Login = () => {
         <div className="login-form">
           <h2>Login</h2>
           {error && <div className="login-error-alert">{error}</div>}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => handleSubmit(e, isAdmin)}>
             <div className="login-form-group">
               <label htmlFor="email">Email:</label>
               <input
@@ -102,17 +105,13 @@ const Login = () => {
                 Login as User
               </button>
             </div>
-
-            <p className="login-signup">
-              New User?<span> </span>
-              <span className="login-signup-link" onClick={handleSignUp}>
-                Create Account
-              </span>
-            </p>
-            <button type="submit" className="login-button">
-              Login
-            </button>
           </form>
+          <p className="login-signup">
+            New User?{" "}
+            <span className="login-signup-link" onClick={handleSignUp}>
+              Create Account
+            </span>
+          </p>
         </div>
       </div>
     </div>

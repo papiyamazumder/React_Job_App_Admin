@@ -240,6 +240,13 @@
       "email": "swe@gmail.com",
       "password": "Swe@1234",
       "role": "user"
+    },
+    {
+      "id": "1364",
+      "name": "Anu",
+      "email": "anu@gmail.com",
+      "password": "Swe@1234",
+      "role": "admin"
     }
   ]
 }
