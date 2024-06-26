@@ -1,39 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProfileDisplay from './profileDisplay.js';
 import ProfileForm from './profileform.js';
-import { loginUser } from '../../Api/usersApi.js';
-
+import { useAuth } from '../../Auth/AuthProvider';
+import { getUserProfile } from '../../Api/usersApi'; // Assuming this function fetches user profile
+ 
 function Display() {
   const [profileCreated, setProfileCreated] = useState(false);
-  const [userEmail, setUserEmail] = useState(''); // State to hold logged-in user's email
-
-  const handleProfileCreate = async (email) => {
-    try {
-      const user = await loginUser(email); // Assuming loginUser fetches user data by email
-      setUserEmail(user.email); // Set logged-in user's email
-      setProfileCreated(true);
-    } catch (error) {
-      console.error('Error logging in:', error);
-      // Handle login error
+  const { userEmail } = useAuth();
+ 
+  useEffect(() => {
+    const checkUserProfile = async () => {
+      try {
+        const userProfile = await getUserProfile(userEmail); // Fetch user profile
+        if (userProfile) {
+          setProfileCreated(true); // If profile exists, set profileCreated to true
+        } else {
+          setProfileCreated(false); // If profile does not exist, set profileCreated to false
+        }
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+        // Handle error fetching user profile
+      }
+    };
+ 
+    if (userEmail) {
+      checkUserProfile();
     }
+  }, [userEmail]);
+ 
+  const handleProfileCreate = () => {
+    setProfileCreated(true); // Set profileCreated to true when profile is created
   };
-
+ 
   const handleEdit = () => {
     setProfileCreated(false); // Switch back to ProfileForm
   };
+ 
   const handleCancel = () => {
-    setProfileCreated(false); // Switch back to ProfileDisplay without saving changes
+    setProfileCreated(true); // Switch back to ProfileDisplay without saving changes
   };
-
+ 
   return (
-    <div>
+<div>
       {profileCreated ? (
-        <ProfileDisplay userEmail={userEmail} onEdit={handleEdit} />
+<ProfileDisplay userEmail={userEmail} onEdit={handleEdit} />
       ) : (
-        <ProfileForm userEmail={userEmail}onCreate={() => handleProfileCreate(userEmail)} onCancel={handleCancel} />
+<ProfileForm userEmail={userEmail} onCreate={handleProfileCreate} onCancel={handleCancel} />
       )}
-    </div>
+</div>
   );
 }
-
+ 
 export default Display;
+

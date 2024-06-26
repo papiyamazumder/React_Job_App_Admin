@@ -51,7 +51,6 @@ function NavbarLinks() {
 }
  
 function App() {
-  const [jobs, setJobs] = useState(CompanyJobs);
  
   return (
     <div className="App">

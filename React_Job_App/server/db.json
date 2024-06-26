@@ -213,12 +213,12 @@
   ],
   "profiles": [
     {
-      "id": "a885",
+      "id": "1850",
       "basicDetails": {
-        "profilePhoto": null,
-        "fullname": "Varun C",
-        "gender": "Male",
-        "email": "varun@gmail.com",
+        "profilePhoto": "C:\\fakepath\\Leave application.png",
+        "fullname": "Riki Naik",
+        "gender": "Female",
+        "email": "riki@gmail.com",
         "address": "2258,shettikere,durgakeri,honnavara",
         "city": "Honnavar",
         "state": "Karnataka",
@@ -256,20 +256,20 @@
       }
     },
     {
-      "id": "bd42",
+      "id": "1d84",
       "basicDetails": {
         "profilePhoto": "C:\\fakepath\\Leave application.png",
-        "fullname": "Riki",
-        "gender": "Female",
-        "email": "riki@gmail.com",
+        "fullname": "Ran Nath",
+        "gender": "Male",
+        "email": "ram@gmail.com",
         "address": "2258,shettikere,durgakeri,honnavara",
         "city": "Honnavar",
-        "state": "Karnataka",
-        "mobileNumber": "8431955266",
+        "state": "Gujarat",
+        "mobileNumber": "0987654321",
         "previewUrl": null
       },
       "educationDetails": {
-        "coursename": "B.Tech/B.E",
+        "coursename": "BCA",
         "specialization": "Information Science and Engineering",
         "collegename": "Dayananda Sagar College of Engineering",
         "cgpa": "9",
@@ -305,6 +305,18 @@
       "name": "Riki",
       "email": "riki@gmail.com",
       "password": "Riki@123"
+    },
+    {
+      "id": "f7ca",
+      "name": "Varun C",
+      "email": "varun@gmail.com",
+      "password": "Varun@123"
+    },
+    {
+      "id": "8d5c",
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "password": "Ram@1234"
     }
   ]
 }

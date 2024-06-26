@@ -11,12 +11,13 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const isValidLogin = await validateLogin(email, password);
         if (isValidLogin) {
-          login();
+          login(email);
           navigate('/jobs'); // Redirect to jobs page after successful login
         } else {
           setError('Invalid email or password. Please try again.');

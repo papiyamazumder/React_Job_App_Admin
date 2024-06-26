@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { getUserProfile,userProfile } from '../../Api/usersApi';
 
 const ProfileForm = ({userEmail, onCreate, onCancel }) => {
-  const [formData, setFormData] = useState({
+  const initialFormData={
     basicDetails: {
       profilePhoto: null,
       fullname: '',
@@ -45,20 +45,30 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
       workdescription: '',
       typeofexperience: '',
     }
-  });
+  };
 
-   useEffect(() => {
-      if(userEmail){
-        getUserProfile(userEmail).then((userProfile)=>{
-          if (userProfile){
-            setFormData(userProfile)
+  const [formData, setFormData] = useState(initialFormData);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (userEmail) {
+          const userProfileData = await getUserProfile(userEmail);
+          console.log(userProfileData)
+          if (userProfileData) {
+            setFormData(userProfileData);
+          } else {
+            // Handle case where userProfileData is null or undefined
+            setFormData(initialFormData); // Reset formData to initial empty values
           }
-        }).catch((error)=>{
-          console.error("Error fetching user profile",error);
-        })
+        }
+      } catch (error) {
+        console.error('Error fetching user profile', error);
+        // Handle error appropriately
       }
-    },[userEmail]
-    );
+    };
+    fetchData();
+  }, [userEmail]);
 
   const handleChange = (e, section) => {
     const { name, value, files } = e.target;
@@ -122,7 +132,7 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
     e.preventDefault();
     try{
       const response= await userProfile(formData);
-      console.log("Profile Created",response.data);
+      console.log("Profile Created",response);
       onCreate();
     }catch (error) {
       console.error('Error saving profile:', error);
