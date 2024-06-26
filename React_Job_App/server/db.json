@@ -211,7 +211,6 @@
       }
     }
   ],
-<<<<<<< HEAD
   "profiles": [
     {
       "id": "1850",
@@ -318,8 +317,10 @@
       "name": "Ram",
       "email": "ram@gmail.com",
       "password": "Ram@1234"
-=======
+    }],
+
   "profiles": [],
+
   "users": [
     {
       "id": "6850",
@@ -348,7 +349,7 @@
       "email": "swe@gmail.com",
       "password": "Swe@1234",
       "role": "user"
-<<<<<<< HEAD
+
     },
     {
       "id": "1364",
@@ -356,9 +357,8 @@
       "email": "anu@gmail.com",
       "password": "Swe@1234",
       "role": "admin"
-=======
->>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
->>>>>>> 96b60eb894d7ce8b62307733f09214dd9046fb5a
     }
+    
   ]
-}
+
+    }
