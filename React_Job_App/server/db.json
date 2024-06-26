@@ -214,10 +214,18 @@
   "profiles": [],
   "users": [
     {
-      "id": "5de6",
-      "name": "Riki",
-      "email": "riki@gmail.com",
-      "password": "Riki@123"
+      "id": "6850",
+      "name": "sweta",
+      "email": "swetasubudhi12@gmail.com",
+      "password": "Swe@1234",
+      "role": "user"
+    },
+    {
+      "id": "109a",
+      "name": "Subudhi",
+      "email": "sweta@gmail.com",
+      "password": "Sweta@1234",
+      "role": "admin"
     }
   ]
 }
