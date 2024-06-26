@@ -211,6 +211,7 @@
       }
     }
   ],
+<<<<<<< HEAD
   "profiles": [
     {
       "id": "1850",
@@ -317,6 +318,37 @@
       "name": "Ram",
       "email": "ram@gmail.com",
       "password": "Ram@1234"
+=======
+  "profiles": [],
+  "users": [
+    {
+      "id": "6850",
+      "name": "sweta",
+      "email": "swetasubudhi12@gmail.com",
+      "password": "Swe@1234",
+      "role": "user"
+    },
+    {
+      "id": "109a",
+      "name": "Subudhi",
+      "email": "sweta@gmail.com",
+      "password": "Sweta@1234",
+      "role": "admin"
+    },
+    {
+      "id": "c599",
+      "name": "sweta",
+      "email": "swetasubudhi99@gmail.com",
+      "password": "Swe@1234",
+      "role": "admin"
+    },
+    {
+      "id": "c4dc",
+      "name": "sww",
+      "email": "swe@gmail.com",
+      "password": "Swe@1234",
+      "role": "user"
+>>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
     }
   ]
 }

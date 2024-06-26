@@ -1,35 +1,59 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {validateLogin,loginUser} from '../../Api/usersApi';
-import { AuthProvider,useAuth } from '../../Auth/AuthProvider';
-import './Login.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { validateLogin, loginUser } from "../../Api/usersApi";
+import { useAuth } from "../../Auth/AuthProvider";
+import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const { login } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const [isAdmin, setIsAdmin] = useState(false);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const isValidLogin = await validateLogin(email, password);
+<<<<<<< HEAD
         if (isValidLogin) {
           login(email);
           navigate('/jobs'); // Redirect to jobs page after successful login
+=======
+      if (isValidLogin) {
+        const userData = await loginUser(email);
+        if (userData.role === "user" && !isAdmin) {
+          login(userData);
+          navigate("/jobs");
+        } else if (userData.role === "admin" && isAdmin) {
+          login(userData);
+          navigate("/admin-dashboard");
+>>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
         } else {
-          setError('Invalid email or password. Please try again.');
+          setError("Invalid user role for selected login option.");
         }
+      } else {
+        setError("Invalid email or password. Please try again.");
+      }
     } catch (error) {
-      console.error('Login failed:', error);
-      setError('Login failed. Please try again.'); // Handle login error
+      console.error("Login failed:", error);
+      setError("Login failed. Please try again.");
     }
   };
 
   const handleSignUp = () => {
-    navigate('/registration');
+    navigate("/registration");
+  };
+
+  const handleLoginAsAdmin = () => {
+    setIsAdmin(true);
+  };
+
+  const handleLoginAsUser = () => {
+    setIsAdmin(false);
   };
 
   return (
@@ -69,19 +93,32 @@ const Login = () => {
                 className="login-input"
               />
             </div>
-            <button type="submit" className="login-button">
-              Login
-            </button>
+            <div className="login-roles">
+              <button
+                type="button"
+                className={`login-button ${isAdmin ? "active" : ""}`}
+                onClick={handleLoginAsAdmin}
+              >
+                Login as Admin
+              </button>
+              <button
+                type="button"
+                className={`login-button ${!isAdmin ? "active" : ""}`}
+                onClick={handleLoginAsUser}
+              >
+                Login as User
+              </button>
+            </div>
+
             <p className="login-signup">
               New User?<span> </span>
-              <span
-                href="/registration"
-                className="login-signup-link"
-                onClick={handleSignUp}
-              >
+              <span className="login-signup-link" onClick={handleSignUp}>
                 Create Account
               </span>
             </p>
+            <button type="submit" className="login-button">
+              Login
+            </button>
           </form>
         </div>
       </div>
