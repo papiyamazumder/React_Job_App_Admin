@@ -13,11 +13,21 @@ const Login = () => {
   const { login } = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
 
+<<<<<<< HEAD
   const handleSubmit = async (e, adminLogin) => {
+=======
+
+  const handleSubmit = async (e) => {
+>>>>>>> 96b60eb894d7ce8b62307733f09214dd9046fb5a
     e.preventDefault();
 
     try {
       const isValidLogin = await validateLogin(email, password);
+<<<<<<< HEAD
+        if (isValidLogin) {
+          login(email);
+          navigate('/jobs'); // Redirect to jobs page after successful login
+=======
       if (isValidLogin) {
         const userData = await loginUser(email);
         if (userData.role === "user" && !adminLogin) {
@@ -25,7 +35,12 @@ const Login = () => {
           navigate("/jobs"); // Navigate to jobs page for regular user
         } else if (userData.role === "admin" && adminLogin) {
           login(userData);
+<<<<<<< HEAD
           navigate("/admin-dashboard"); // Navigate to admin dashboard for admin
+=======
+          navigate("/admin-dashboard");
+>>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
+>>>>>>> 96b60eb894d7ce8b62307733f09214dd9046fb5a
         } else {
           setError("Invalid user role for selected login option.");
         }

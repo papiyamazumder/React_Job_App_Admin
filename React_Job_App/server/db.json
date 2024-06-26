@@ -211,6 +211,114 @@
       }
     }
   ],
+<<<<<<< HEAD
+  "profiles": [
+    {
+      "id": "1850",
+      "basicDetails": {
+        "profilePhoto": "C:\\fakepath\\Leave application.png",
+        "fullname": "Riki Naik",
+        "gender": "Female",
+        "email": "riki@gmail.com",
+        "address": "2258,shettikere,durgakeri,honnavara",
+        "city": "Honnavar",
+        "state": "Karnataka",
+        "mobileNumber": "0843195526",
+        "previewUrl": null
+      },
+      "educationDetails": {
+        "coursename": "B.Tech/B.E",
+        "specialization": "Information Science and Engineering",
+        "collegename": "Dayananda Sagar College of Engineering",
+        "cgpa": "9",
+        "previewUrl": null
+      },
+      "skills": {
+        "skills": "C, Java, C#, React",
+        "previewUrl": null
+      },
+      "projects": {
+        "projectname": "",
+        "projectdetails": "",
+        "projectskills": "",
+        "projecturl": ""
+      },
+      "certifications": {
+        "certificationname": "",
+        "certificateurl": ""
+      },
+      "experience": {
+        "companyname": "",
+        "designation": "",
+        "totalExperienceMonths": "",
+        "totalExperienceYears": "",
+        "workdescription": "",
+        "typeofexperience": ""
+      }
+    },
+    {
+      "id": "1d84",
+      "basicDetails": {
+        "profilePhoto": "C:\\fakepath\\Leave application.png",
+        "fullname": "Ran Nath",
+        "gender": "Male",
+        "email": "ram@gmail.com",
+        "address": "2258,shettikere,durgakeri,honnavara",
+        "city": "Honnavar",
+        "state": "Gujarat",
+        "mobileNumber": "0987654321",
+        "previewUrl": null
+      },
+      "educationDetails": {
+        "coursename": "BCA",
+        "specialization": "Information Science and Engineering",
+        "collegename": "Dayananda Sagar College of Engineering",
+        "cgpa": "9",
+        "previewUrl": null
+      },
+      "skills": {
+        "skills": "C, Java, C#, React",
+        "previewUrl": null
+      },
+      "projects": {
+        "projectname": "",
+        "projectdetails": "",
+        "projectskills": "",
+        "projecturl": ""
+      },
+      "certifications": {
+        "certificationname": "",
+        "certificateurl": ""
+      },
+      "experience": {
+        "companyname": "",
+        "designation": "",
+        "totalExperienceMonths": "",
+        "totalExperienceYears": "",
+        "workdescription": "",
+        "typeofexperience": ""
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "5de6",
+      "name": "Riki",
+      "email": "riki@gmail.com",
+      "password": "Riki@123"
+    },
+    {
+      "id": "f7ca",
+      "name": "Varun C",
+      "email": "varun@gmail.com",
+      "password": "Varun@123"
+    },
+    {
+      "id": "8d5c",
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "password": "Ram@1234"
+=======
   "profiles": [],
   "users": [
     {
@@ -240,6 +348,7 @@
       "email": "swe@gmail.com",
       "password": "Swe@1234",
       "role": "user"
+<<<<<<< HEAD
     },
     {
       "id": "1364",
@@ -247,6 +356,9 @@
       "email": "anu@gmail.com",
       "password": "Swe@1234",
       "role": "admin"
+=======
+>>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
+>>>>>>> 96b60eb894d7ce8b62307733f09214dd9046fb5a
     }
   ]
 }
