@@ -1,25 +1,26 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
-import { loginUser } from "../Api/usersApi";
+import React, { createContext, useState, useContext } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const[isAuthenticated,setIsAuthenticated]=useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userEmail, setUserEmail] = useState('');
+  const [userRole, setUserRole] = useState(''); // Add userRole state
 
-  const login = (email) => {
-    // Logic to set isAuthenticated and userEmail based on successful login
+  const login = (email, role) => {
     setIsAuthenticated(true);
     setUserEmail(email);
+    setUserRole(role); // Set the user role
   };
 
   const logout = () => {
     setIsAuthenticated(false);
     setUserEmail('');
+    setUserRole(''); // Reset the user role
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated,userEmail, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, userEmail, userRole, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

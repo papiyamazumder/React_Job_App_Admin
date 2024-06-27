@@ -1,4 +1,3 @@
-// Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validateLogin, loginUser } from "../../Api/usersApi";
@@ -18,14 +17,13 @@ const Login = () => {
 
     try {
       const isValidLogin = await validateLogin(email, password);
-      if(isValidLogin){
-        login(email);
-        const userData= await loginUser(email);
+      if (isValidLogin) {
+        const userData = await loginUser(email);
         if (userData.role === "user" && !adminLogin) {
-          //login(userData);
+          login(email, "user"); 
           navigate("/jobs");
         } else if (userData.role === "admin" && adminLogin) {
-          //login(userData);
+          login(email, "admin"); // Pass the admin role to login
           navigate("/admin-dashboard"); // Navigate to admin dashboard for admin
         } else {
           setError("Invalid user role for selected login option.");
