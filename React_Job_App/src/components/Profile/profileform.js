@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Accordion,Form } from 'react-bootstrap';
-import './profileform.css'
-import {  Row, Col } from 'react-bootstrap';
+import { Accordion, Form } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getUserProfile,userProfile } from '../../Api/usersApi';
+import { getUserProfile, userProfile } from '../../Api/usersApi';
+import './profileform.css';
 
-const ProfileForm = ({userEmail, onCreate, onCancel }) => {
-  const initialFormData={
+const ProfileForm = ({ userEmail, onCreate, onCancel }) => {
+  const initialFormData = {
     basicDetails: {
       profilePhoto: null,
       fullname: '',
       gender: '',
       email: userEmail,
       address: '',
-      city:'',
-      state:'',
+      city: '',
+      state: '',
       mobileNumber: '',
       previewUrl: null,
     },
@@ -35,7 +35,10 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
     },
     certifications: {
       certificationname: '',
-      certificateurl: ''
+      certificateurl: '',
+      certificatefile:null,
+      certificateFileName:'',
+      certificatePreviewUrl:null,
     },
     experience: {
       companyname: '',
@@ -44,6 +47,11 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
       totalExperienceYears: '',
       workdescription: '',
       typeofexperience: '',
+    },
+    resume: {
+      resumeFile: null,
+      resumeFileName: '', // Added to store the file name
+      resumePreviewUrl: null,
     }
   };
 
@@ -54,7 +62,7 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
       try {
         if (userEmail) {
           const userProfileData = await getUserProfile(userEmail);
-          console.log(userProfileData)
+          console.log(userProfileData);
           if (userProfileData) {
             setFormData(userProfileData);
           } else {
@@ -73,149 +81,185 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
   const handleChange = (e, section) => {
     const { name, value, files } = e.target;
     if (name === 'mobileNumber') {
-        // Ensure only digits are entered and limit to 10 digits
-        const cleanedValue = value.replace(/\D/g, '').slice(0, 10);
-        setFormData(prevState => ({
-            ...prevState,
-            [section]: {
-                ...prevState[section],
-                [name]: cleanedValue,
-                
-            },
-        }));
-    } 
-    else if (name === 'cgpa') {
+      // Ensure only digits are entered and limit to 10 digits
+      const cleanedValue = value.replace(/\D/g, '').slice(0, 10);
+      setFormData(prevState => ({
+        ...prevState,
+        [section]: {
+          ...prevState[section],
+          [name]: cleanedValue,
+        },
+      }));
+    } else if (name === 'cgpa') {
       // Ensure only digits and dot (.) are entered for CGPA
       let cleanedValue = value.replace(/[^\d.]/g, '');
       const parts = cleanedValue.split('.');
       if (parts.length > 2) {
         cleanedValue = parts.slice(0, 2).join('.');
-        }
-        if (cleanedValue.includes('..')) {
-          // If consecutive dots found, remove the last dot
-          cleanedValue = cleanedValue.replace('..', '.');
+      }
+      if (cleanedValue.includes('..')) {
+        // If consecutive dots found, remove the last dot
+        cleanedValue = cleanedValue.replace('..', '.');
       }
       setFormData(prevState => ({
+        ...prevState,
+        [section]: {
+          ...prevState[section],
+          [name]: cleanedValue,
+        },
+      }));
+    } else if (name === 'profilePhoto') {
+      const file = files && files.length > 0 ? files[0] : null;
+
+      if (file) {
+        const blobUrl = URL.createObjectURL(file); // Create blob URL for the file
+        setFormData(prevState => ({
           ...prevState,
           [section]: {
-              ...prevState[section],
-              [name]: cleanedValue,
+            ...prevState[section],
+            profilePhoto: file,
+            previewUrl: blobUrl, // Store blob URL instead of data URL
           },
-      }));
-  } 
-    // else if (files && files.length > 0) { // Ensure files array is not empty
-    //     const file = files[0];
-    //     const previewUrl = URL.createObjectURL(file); // Convert file to URL
-    //     setFormData(prevState => ({
-    //         ...prevState,
-    //         [section]: {
-    //             ...prevState[section],
-    //             [name]: file,
-    //             previewUrl: previewUrl // Set preview URL
-    //         },
-    //     }));
-    // }
-     else {
-        setFormData(prevState => ({
-            ...prevState,
-            [section]: {
-                ...prevState[section],
-                [name]: value,
-                previewUrl: null // Set preview URL to null if no file is selected
-            },
         }));
+      } else {
+        // If no file is selected, reset profilePhoto and previewUrl
+        setFormData(prevState => ({
+          ...prevState,
+          [section]: {
+            ...prevState[section],
+            profilePhoto: null,
+            previewUrl: null,
+          },
+        }));
+      }
+    } else if (name === 'resume' ) {
+      const file = files && files.length > 0 ? files[0] : null;
+
+      if (file) {
+        const blobUrl = URL.createObjectURL(file); // Create blob URL for the file
+        setFormData(prevState => ({
+          ...prevState,
+          resume: {
+            resumeFile: file,
+            resumeFileName: file.name,
+            resumePreviewUrl: blobUrl,
+          },
+        }));
+      } else {
+        // If no file is selected, reset resumeFile and resumePreviewUrl
+        setFormData(prevState => ({
+          ...prevState,
+          resume: {
+            resumeFile: null,
+            resumeFileName: '',
+            resumePreviewUrl: null,
+          },
+        }));
+      }
     }
-};
+    else if (name === 'certifications' ) {
+      const file = files && files.length > 0 ? files[0] : null;
 
+      if (file) {
+        const fileUrl = URL.createObjectURL(file); // Create blob URL for the file
+        setFormData(prevState => ({
+          ...prevState,
+          certifications: {
+            certificatefile: file,
+            certificateFileName: file.name,
+            certificateurl: fileUrl,
+          },
+        }));
+      } else {
+        // If no file is selected, reset resumeFile and resumePreviewUrl
+        setFormData(prevState => ({
+          ...prevState,
+          certifications: {
+            certificatefile: null,
+            certificateFileName: '',
+            certificateurl: null,
+          
+          },
+        }));
+      }
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [section]: {
+          ...prevState[section],
+          [name]: value,
+          previewUrl: null // Set preview URL to null if no file is selected
+        },
+      }));
+    }
+  };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response= await userProfile(formData);
-      console.log("Profile Created",response);
+    try {
+      const response = await userProfile(formData);
+      console.log("Profile Created", response);
       onCreate();
-    }catch (error) {
+    } catch (error) {
       console.error('Error saving profile:', error);
       // Handle error appropriately
     }
-    
   };
 
   const handleCancel = () => {
     // Reset form data and cancel the action
     setFormData({
-      basicDetails: {
-        profilePhoto: null,
-        fullname: '',
-        gender: '',
-        email: userEmail,
-        address: '',
-        city:'',
-        state:'',
-        mobileNumber: '',
-        previewUrl: null,
-      },
-      educationDetails: {
-        coursename: '',
-        specialization: '',
-        collegename: '',
-        cgpa: '',
-      },
-      skills: {
-        skills: '',
-      },
-      projects: {
-        projectname: '',
-        projectdetails: '',
-        projectskills: '',
-        projecturl: '',
-      },
-      certifications: {
-        certificationname: '',
-        certificateurl: ''
-        
-      },
-      experience: {
-        companyname: '',
-        designation: '',
-        totalExperienceMonths: '',
-        totalExperienceYears: '',
-        workdescription: '',
-        typeofexperience: '',
+      ...initialFormData,
+      resume: {
+        resumeFile: null,
+        resumeFileName: '',
+        resumePreviewUrl: null,
       }
     });
     onCancel();
   };
 
+ 
   return (
     <div style={{marginTop:"20px"}}>
       <Accordion className="profile-container" defaultActiveKey={['0']} flush alwaysOpen >
       <h2 style={{marginLeft:"210px"}}>Create Profile</h2>
-
-
-
+ 
+ 
+ 
       <Form className="profile-form"onSubmit={handleSubmit}>
       <Accordion.Item eventKey="0">
-        
+       
     <Accordion.Header><b style={{fontSize:"15px"}}>Basic Details</b></Accordion.Header>
-
+ 
     <Accordion.Body>
-      <Form.Group as={Row} className="mb-2" controlledId="profilePhoto">
-        <Form.Label className="form-label" column sm={2}>Profile Photo</Form.Label>
-        <Col sm={10}>
-          <Form.Control type="file" id="profilePhoto" name="profilePhoto"
-            accept="image/*" onChange={e => handleChange(e, 'basicDetails')} />
-          {formData.basicDetails.previewUrl && (
-            <div style={{ marginTop: "10px" }}>
-              <img
-                src={URL.createObjectURL(formData.basicDetails.profilePhoto)}
-                alt="Preview"
-                style={{ minwidth: '200px', minheight: '200px', objectFit: 'contain' }}
-              />
-            </div>
-          )}
-        </Col>
-      </Form.Group>
+    <Form.Group as={Row} className="mb-2" controlId="profilePhoto">
+                <Form.Label className="form-label" column sm={2}>
+                  Profile Photo
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="file"
+                    id="profilePhoto"
+                    name="profilePhoto"
+                    accept="image/*"
+                    onChange={(e) => handleChange(e, 'basicDetails')}
+                  />
+                  {formData.basicDetails.previewUrl && (
+                    <div style={{ marginTop: '10px' }}>
+                      <img
+                        src={formData.basicDetails.previewUrl}
+                        alt="Preview"
+                        style={{
+                          minWidth: '200px',
+                          minHeight: '200px',
+                          objectFit: 'contain',
+                        }}
+                      />
+                    </div>
+                  )}
+                </Col>
+              </Form.Group>
       <Form.Group as={Row} className="mb-3" controlledId="fullname">
         <Form.Label className="form-label" column sm={2}>Full Name</Form.Label>
         <Col sm={10}>
@@ -230,12 +274,12 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
         <Form.Select aria-label="Select your gender" id="gender" name="gender" value={formData.basicDetails.gender} onChange={e => handleChange(e, 'basicDetails')} required>
             <option value="" disabled>Gender</option>
             <option value="Male">Male</option>
-            <option value="Female">Female</option>       
-            <option value="Transgender">Transgender</option>       
+            <option value="Female">Female</option>      
+            <option value="Transgender">Transgender</option>      
         </Form.Select>
     </Col>
 </Form.Group>
-      
+     
       <Row className="mb-3">
         <Form.Group as={Col} controlledId="email">
           <Form.Label className="form-label">Email</Form.Label>
@@ -243,8 +287,8 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
             name="email" value={formData.basicDetails.email}
             onChange={e => handleChange(e, 'basicDetails')} placeholder="Email" required />
         </Form.Group>
-        
-
+       
+ 
         <Form.Group as={Col} controlledId="mobileNumber">
           <Form.Label className="form-label">Mobile No</Form.Label>
           <Form.Control type="tel" id="mobileNumber"
@@ -259,9 +303,9 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
         <Form.Control type="text" id="address" name="address" value={formData.basicDetails.address} onChange={e => handleChange(e, 'basicDetails')} placeholder="Address" required />
     </Col>
 </Form.Group>
-
+ 
 <Row className="mb-3">
-
+ 
 <Form.Group as={Col} className="mb-3" controlId="formHorizontalState">
     <Form.Label className="form-label" column sm={2}>State</Form.Label>
     <Col sm={10}>
@@ -277,22 +321,22 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
             <option value="Rajasthan">Rajasthan</option>
             <option value="Madhya Pradesh">Madhya Pradesh</option>
             <option value="Delhi">Delhi</option>
-
-            
+ 
+           
         </Form.Select>
     </Col>
 </Form.Group>
 <Form.Group as={Col} className="mb-3" controlId="formHorizontalCity">
-    <Form.Label className="form-label" column sm={2}>City</Form.Label> 
+    <Form.Label className="form-label" column sm={2}>City</Form.Label>
         <Form.Control type="text" id="city" name="city" value={formData.basicDetails.city} onChange={e => handleChange(e, 'basicDetails')} placeholder="City" required />  
 </Form.Group>
-
+ 
       </Row>
     </Accordion.Body>
   </Accordion.Item>
-
-
-
+ 
+ 
+ 
      
       <Accordion.Item eventKey="1">
         <Accordion.Header><b style={{fontSize:"15px"}}>Education</b></Accordion.Header>
@@ -382,7 +426,7 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
           value={formData.projects.projectdetails}
           onChange={e => handleChange(e, 'projects')}
           placeholder="Description"
-          
+         
         />
       </Col>
     </Form.Group>
@@ -409,12 +453,12 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
     </Form.Group>
   </Accordion.Body>
 </Accordion.Item>
-
+ 
  
        
 <Accordion.Item eventKey="4">
  <Accordion.Header ><b style={{fontSize:"15px"}}>Certifications</b></Accordion.Header>
-
+ 
   <Accordion.Body>
     <Form.Group as={Row} className="mb-3" controlId="formCertificationName">
       <Form.Label className="form-label" column sm={2}>Certification Name</Form.Label>
@@ -423,7 +467,7 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
           value={formData.certifications.certificationname}
           onChange={e => handleChange(e, 'certifications')}
           placeholder="Certification Name"
-          
+         
         />
       </Col>
     </Form.Group>
@@ -437,7 +481,26 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
         />
       </Col>
     </Form.Group>
-
+    <Form.Group as={Row} className="mb-3" controlId="formCertificateFile">
+                <Form.Label className="form-label" column sm={2}>
+                  Certificate (PDF)
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="file"
+                    id="certificatefile"
+                    name="certificatefile"
+                    accept=".pdf"
+                    onChange={(e) => handleChange(e, 'certifications')}
+                  />
+                  {formData.certifications.certificatePreviewUrl && (
+                    <div style={{ marginTop: '10px' }}>
+                      <a href={formData.certifications.certificatePreviewUrl} target="_blank" rel="noopener noreferrer">View Uploaded Certificate</a>
+                    </div>
+                  )}
+                </Col>
+              </Form.Group>
+ 
    
   </Accordion.Body>
 </Accordion.Item>
@@ -538,12 +601,37 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
              
             </Accordion.Body>
           </Accordion.Item>
+          <Accordion.Item eventKey="6">
+            <Accordion.Header><b style={{ fontSize: "15px" }}>Resume</b></Accordion.Header>
+            <Accordion.Body>
+              <Form.Group as={Row} className="mb-2" controlId="resume">
+                <Form.Label className="form-label" column sm={2}>
+                  Resume (PDF)
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control
+                    type="file"
+                    id="resume"
+                    name="resume"
+                    accept=".pdf"
+                    onChange={(e) => handleChange(e, 'resume')}
+                  />
+                  {formData.resume.resumePreviewUrl && (
+                    <div style={{ marginTop: '10px' }}>
+                      <a href={formData.resume.resumePreviewUrl} target="_blank" rel="noopener noreferrer">View Uploaded Resume</a>
+                    </div>
+                  )}
+                </Col>
+              </Form.Group>
+            </Accordion.Body>
+          </Accordion.Item>
 
+ 
 <br/>
        
         <div  className="button-profile-container">
              <button className="reset-btn"type="button" onClick={handleCancel}>
-            Reset
+            Cancel
           </button>
           <button className="submit-btn" type="submit" >Save</button>
         </div>
@@ -556,6 +644,6 @@ const ProfileForm = ({userEmail, onCreate, onCancel }) => {
      
   );
 };
-
-
+ 
+ 
 export default ProfileForm;

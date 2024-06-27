@@ -211,12 +211,11 @@
       }
     }
   ],
-<<<<<<< HEAD
   "profiles": [
     {
       "id": "1850",
       "basicDetails": {
-        "profilePhoto": "C:\\fakepath\\Leave application.png",
+        "profilePhoto": {},
         "fullname": "Riki Naik",
         "gender": "Female",
         "email": "riki@gmail.com",
@@ -224,7 +223,7 @@
         "city": "Honnavar",
         "state": "Karnataka",
         "mobileNumber": "0843195526",
-        "previewUrl": null
+        "previewUrl": "blob:http://localhost:3000/528a5078-577e-4161-b8e5-a26add825fc1"
       },
       "educationDetails": {
         "coursename": "B.Tech/B.E",
@@ -298,6 +297,60 @@
         "workdescription": "",
         "typeofexperience": ""
       }
+    },
+    {
+      "id": "714c",
+      "basicDetails": {
+        "profilePhoto": {},
+        "fullname": "Manvith",
+        "gender": "Female",
+        "email": "man@gmail.com",
+        "address": "Kolar ,Bengaluru",
+        "city": "Mulbagal",
+        "state": "Karnataka",
+        "mobileNumber": "0897896543",
+        "previewUrl": "blob:http://localhost:3000/89e9c94b-b73f-41ff-b960-4239497e51ca"
+      },
+      "educationDetails": {
+        "coursename": "B.Tech/B.E",
+        "specialization": "Inforamtion Science and Engineering",
+        "collegename": "Dayanada Sagar Academy of Technologu",
+        "cgpa": "8.6",
+        "previewUrl": null
+      },
+      "skills": {
+        "skills": "C#, Java, Html",
+        "previewUrl": null
+      },
+      "projects": {
+        "projectname": "",
+        "projectdetails": "",
+        "projectskills": "",
+        "projecturl": ""
+      },
+      "certifications": {
+        "certificationname": "",
+        "certificateurl": "",
+        "certificatefile": "C:\\fakepath\\Certificate.pdf",
+        "previewUrl": null
+      },
+      "experience": {
+        "companyname": "",
+        "designation": "",
+        "totalExperienceMonths": "",
+        "totalExperienceYears": "",
+        "workdescription": "",
+        "typeofexperience": ""
+      },
+      "resume": {
+        "resumeFile": {},
+        "resumeFileName": "Vandana C_CG_Resume_46344120.pdf",
+        "resumePreviewUrl": "blob:http://localhost:3000/14651ac1-06e6-4786-ae4f-e656976bdf66"
+      },
+      "certification": {
+        "certificatefile": "C:\\fakepath\\Certificate.pdf",
+        "previewUrl": null
+      }
     }
   ],
   "users": [
@@ -318,37 +371,13 @@
       "name": "Ram",
       "email": "ram@gmail.com",
       "password": "Ram@1234"
-=======
-  "profiles": [],
-  "users": [
+    },
     {
-      "id": "6850",
-      "name": "sweta",
-      "email": "swetasubudhi12@gmail.com",
-      "password": "Swe@1234",
+      "id": "b14f",
+      "name": "Manvith",
+      "email": "man@gmail.com",
+      "password": "Man@0880",
       "role": "user"
-    },
-    {
-      "id": "109a",
-      "name": "Subudhi",
-      "email": "sweta@gmail.com",
-      "password": "Sweta@1234",
-      "role": "admin"
-    },
-    {
-      "id": "c599",
-      "name": "sweta",
-      "email": "swetasubudhi99@gmail.com",
-      "password": "Swe@1234",
-      "role": "admin"
-    },
-    {
-      "id": "c4dc",
-      "name": "sww",
-      "email": "swe@gmail.com",
-      "password": "Swe@1234",
-      "role": "user"
->>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
     }
   ]
 }

@@ -18,26 +18,20 @@ const Login = () => {
 
     try {
       const isValidLogin = await validateLogin(email, password);
-<<<<<<< HEAD
-        if (isValidLogin) {
-          login(email);
-          navigate('/jobs'); // Redirect to jobs page after successful login
-=======
+         // Redirect to jobs page after successful login
       if (isValidLogin) {
+        login(email)
         const userData = await loginUser(email);
         if (userData.role === "user" && !isAdmin) {
-          login(userData);
+          
           navigate("/jobs");
         } else if (userData.role === "admin" && isAdmin) {
-          login(userData);
+         
           navigate("/admin-dashboard");
->>>>>>> 2a57838b08f75a557d9c643a51d874cd43c381dc
         } else {
           setError("Invalid user role for selected login option.");
         }
-      } else {
-        setError("Invalid email or password. Please try again.");
-      }
+      } 
     } catch (error) {
       console.error("Login failed:", error);
       setError("Login failed. Please try again.");

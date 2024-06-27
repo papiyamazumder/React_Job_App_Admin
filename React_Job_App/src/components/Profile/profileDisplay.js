@@ -7,6 +7,7 @@ import { GrPhone } from "react-icons/gr";
 import { IoLocationOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { getUserProfile } from '../../Api/usersApi';
+import { PiCity } from "react-icons/pi";
 
 const ProfileDisplay = ({ userEmail,onEdit }) => {
   const [formData, setFormData] = useState({
@@ -37,6 +38,9 @@ const ProfileDisplay = ({ userEmail,onEdit }) => {
     certifications: {
       certificationname: '',
       certificateurl: '',
+      certificatefile:null,
+      certificateFileName:'',
+      certificatePreviewUrl:null,
     },
     experience:{
       companyname: '',
@@ -45,20 +49,22 @@ const ProfileDisplay = ({ userEmail,onEdit }) => {
       totalExperienceYears: '',
       workdescription: '',
       typeofexperience: ''
-          
-
-    }
+   },
+   resume: {
+    resumeFile: null,
+    resumeFileName: '',
+    resumePreviewUrl: null,
+  },
   });
   const navigate = useNavigate();
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        // Replace with actual API call to fetch user profile based on userEmail
-        const userProfileData = await getUserProfile(userEmail);
-        if (userProfileData) {
+        const userProfileData = await getUserProfile(userEmail); // Replace with actual API call
+        if (userProfileData)
           setFormData(userProfileData);
         }
-      } catch (error) {
+      catch (error) {
         console.error('Error fetching user profile:', error);
         // Handle error fetching user profile
       }
@@ -108,9 +114,8 @@ const ProfileDisplay = ({ userEmail,onEdit }) => {
             <p className="display-card-text"><AiTwotoneMail  style={{ fontSize: '24px' }}/> {formData.basicDetails.email}</p>
             <p className="display-card-text"><BsGenderAmbiguous style={{ fontSize: '24px' }}/> {formData.basicDetails.gender}</p>
             <p className="display-card-text"><IoLocationOutline style={{ fontSize: '24px' }}/> {formData.basicDetails.address}</p>
+            <p className="display-card-text"> <PiCity   style={{ fontSize: '24px' }}/>{formData.basicDetails.city}</p>
             <p className="display-card-text">{` ${formData.basicDetails.state}`}</p>
-
-            <p className="display-card-text"> {formData.basicDetails.city}</p>
             <p className="display-card-text"><GrPhone style={{ fontSize: '24px' }} />: {formData.basicDetails.mobileNumber}</p>
           </div>
           </div>
@@ -150,6 +155,17 @@ const ProfileDisplay = ({ userEmail,onEdit }) => {
             <h5 className="display-card-title">Certifications</h5>
             <p className="display-card-text">Certification Name: {formData.certifications.certificationname}</p>
             <p className="display-card-text">Certification URL: {formData.certifications.certificateurl}</p>
+            <p className="display-card-text">Certificate:</p>
+            {formData.certifications.certificatePreviewUrl? (
+              
+             
+               
+                <a href={formData.certifications.certificatePreviewUrl} target="_blank" rel="noopener noreferrer">{formData.certifications.certificateFileName}</a>
+                 
+             
+            ) : (
+              <p className="display-card-text">No Certificate uploaded</p>
+            )}
           </div>
         </div>
       </div>
@@ -164,10 +180,26 @@ const ProfileDisplay = ({ userEmail,onEdit }) => {
             <p  className="display-card-text">Job profile:{formData.experience.workdescription}</p>
           </div>
         </div>
+        <div className="display-card">
+          <div className="display-card-body">
+            <h5 className="display-card-title">Resume</h5>
+            {formData.resume.resumePreviewUrl? (
+              <div>
+             
+               
+                <a href={formData.resume.resumePreviewUrl} target="_blank" rel="noopener noreferrer">{formData.resume.resumeFileName}</a>
+                 
+              </div>
+            ) : (
+              <p className="display-card-text">No resume uploaded</p>
+            )}
+          </div>
+        </div>
+
        
       <div className="button-display-container">
         <button   className="edit-btn" onClick={onEdit}>Edit</button>
-        <button onClick={handleSubmit} className="apply-btn">Apply</button>
+        <button onClick={handleSubmit} className="apply-btn">Submit</button>
       </div>
     </div>
   );
