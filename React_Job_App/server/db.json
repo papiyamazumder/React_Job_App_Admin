@@ -279,6 +279,20 @@
       "email": "admin@gmail.com",
       "password": "Admin@123",
       "role": "admin"
+    },
+    {
+      "id": "6ae6",
+      "name": "a",
+      "email": "a@a.com",
+      "password": "123456789",
+      "role": "admin"
+    },
+    {
+      "id": "0b6b",
+      "name": "u",
+      "email": "u@u.com",
+      "password": "123456789",
+      "role": "user"
     }
   ]
 }

@@ -88,6 +88,7 @@ font-size: medium;
 
 .registration-form .registration-bt:hover {
   background-color: #0056b3;
+  /* color: #dc3545; */
 }
 
 /* Responsive Design */
@@ -137,4 +138,5 @@ font-size: medium;
     font-size: 12px;
     padding: 6px;
   }
+
 }

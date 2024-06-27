@@ -2,10 +2,10 @@
 
 .login-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
+  justify-content: center;
+  height: 91vh;
 }
 
 .login-card {
@@ -32,8 +32,7 @@
 
 .login-form {
   flex: 1;
-  padding-left: 40px; /* Space between image and form */
-  text-align: center;
+  padding-left: 40px; /* Increased space between GIF and form */
 }
 
 .login-form h2 {
@@ -44,73 +43,77 @@
   font-weight: bold; /* Make the title bold */
 }
 
+.login-error-alert {
+  color: #ff4d4f;
+  margin-bottom: 20px; /* Increased margin */
+}
+
 .login-form-group {
-  margin-bottom: 24px;
+  margin-bottom: 24px; /* Increased margin */
 }
 
 .login-form-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 8px; /* Increased margin */
+  font-size: 18px; /* Increased font size */
+  color: #555555;
 }
 
-.login-input {
-  width: calc(100% - 20px);
-  padding: 8px 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease-in-out;
-}
-
-.login-input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.login-error-alert {
-  color: #dc3545;
-  margin-bottom: 10px;
-}
-
-.login-roles {
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between; /* Ensures buttons are evenly spaced */
+.login-form-group input {
+  width: 100%;
+  padding: 12px; /* Increased padding */
+  border: 1px solid #ddd;
+  border-radius: 6px; /* Increased border radius */
+  font-size: 18px; /* Increased font size */
 }
 
 .login-button {
-  
-  width: calc(50% - 10px); /* Adjust button width and spacing */
-  padding: 10px;
-  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px; /* Smaller padding for the button */
   border: none;
-  border-radius: 4px;
+  border-radius: 6px; /* Increased border radius */
+  font-size: 17px; /* Decreased font size */
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s;
+  display: block; /* Ensures button is centered */
+  margin: 0 auto; /* Centers the button */
 }
 
 .login-button:hover {
-  background-color:#007bff;
-  color: #fff;
+  background-color: #0056b3;
 }
 
-.login-button.active {
-  background-color: #007bff; /* Style for active button */
-  color: #fff;
+.login-signup-link{
+  cursor: pointer;
+  font-weight: bold; 
+  color: #1890ff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .login-signup {
-  margin-top: 15px;
-  font-size: 14px;
+  margin-top: 24px; /* Increased margin */
+  font-size: 18px; /* Increased font size */
+  color: #555555;
+  text-align: center; /* Center align text */
 }
 
-.login-signup span {
-  cursor: pointer;
-  color: #007bff;
-  text-decoration: underline;
+.login-signup a:hover {
+  color: #40a9ff;
 }
 
-.login-signup span:hover {
-  color: #0056b3;
+.login-roles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-role{
+  text-align: center;
+  background-color: #1890ff;
+  color:  white;
+  font-size:22px;
+  padding: 10px;
+  margin: 10px 45px;
+  border-radius:  10px 10px 10px 10px;
 }

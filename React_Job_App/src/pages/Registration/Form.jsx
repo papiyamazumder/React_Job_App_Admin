@@ -17,8 +17,9 @@ export default function Form() {
     const [passwordError, setPasswordError] = useState(false);
     const [confirmPasswordError, setConfirmPasswordError] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
-    const [selectedRole, setSelectedRole] = useState('user'); // State for selected role (default: user)
+    const [selectedRole, setSelectedRole] = useState('');
 
+    
     // // Function to register a new user
     // const registerUser = async (userData) => {
     //     const response = await fetch('http://localhost:5000/users', {
@@ -186,7 +187,9 @@ export default function Form() {
                             className="registration-input"
                             value={selectedRole}
                             onChange={handleRoleChange}
+                            style={{color: selectedRole ? '#000000' : '#808080'}}
                         >
+                            <option value="" disabled hidden>Select Role</option>
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>

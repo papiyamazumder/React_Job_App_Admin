@@ -142,6 +142,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+
 }
 
 .section-header-top {
@@ -155,26 +156,45 @@
   margin-right: 60px;
   text-align: center;
   max-width: 200px;
+  
 }
 
-
-.company-logo p:hover {
+.company-logo a {
+  text-decoration: none;
+}
+.company-logo a:hover, .company-logo:hover {
   transform: scale(1.1);
   color: red;
 }
 
-.company-logo p {
+.company-logo a {
+  text-decoration: none;
   margin-top: 10px;
   font-size: 1.2rem;
   font-weight: 400;
   color: rgb(0, 115, 255);
-  /* color: #014BEC; */
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  text-shadow:  10px 10px 5px rgba(21, 20, 20, 0.1);
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+  text-shadow: 10px 10px 5px rgba(21, 20, 20, 0.1);
 }
 
-/* Testimonials section styles */
+.company-logo:hover, .company-logo a:hover {
+  transform: scale(1.1);
+  color: red;
+}
+/* .slick-slide {
+  margin: 0 10px;
+}
+ */
+
+
+.testimonial-card {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .testimonials {
   background-color: #ffffff;
   padding: 40px 20px;

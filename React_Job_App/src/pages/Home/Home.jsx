@@ -1,4 +1,7 @@
 import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import jobsData from '../../Json/jobs.json';
 import companiesData from '../../Json/companies.json';
 import testimonialsData from '../../Json/testimonials.json';
@@ -6,8 +9,15 @@ import './Home.css'; // Import custom CSS for Home page styles
 import { FaFacebookSquare, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { IoLogoWhatsapp, IoPerson } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom'; 
+import Carousel from '../../components/Carousel/CarouselTestimonial/Carousel'; // Ensure this path is correct
 
-function Home({isAuthenticated}) {
+function Home() {
+  const navigate = useNavigate();
+  const handleBrowseJobs = () => {
+    navigate('/jobs'); // Navigate to /jobs when button is clicked
+  };
+
   return (
     <div className="home-container">
       <section className="hero-section">
@@ -15,11 +25,7 @@ function Home({isAuthenticated}) {
           <h1 className="hero-title">Find Your Dream Job Today</h1>
           <p className="hero-description">Explore thousands of job opportunities from top companies.</p>
           <div className="home-hero-buttons">
-          {isAuthenticated ? (
-              <a href="/jobs" className="btn home-btn-primary">Browse Jobs</a>
-            ) : (
-              <a href="/login" className="btn home-btn-primary">Browse Jobs</a>
-            )}
+            <p onClick={handleBrowseJobs} className="btn home-btn-primary">Browse Jobs</p>
           </div>
         </div>
       </section>
@@ -35,7 +41,10 @@ function Home({isAuthenticated}) {
               <p style={{fontWeight:"initial"}}>{job.company}</p>
               <p style={{fontWeight:"lighter"}}>{job.location}</p>
               <p>{job.description}</p>
-              <p style={{fontWeight:"lighter"}}><p style={{fontWeight:"400"}}>{job.requirements.split(':')[0].trim() + ": "}</p>{job.requirements.split(':')[1].trim()}</p>
+              <p style={{fontWeight:"lighter"}}>
+                <p style={{fontWeight:"400"}}>{job.requirements.split(':')[0].trim() + ": "}</p>
+                {job.requirements.split(':')[1].trim()}
+              </p>
               {/* <p>Posted: {job.posted_date}</p> */}
             </div>
           ))}
@@ -49,7 +58,7 @@ function Home({isAuthenticated}) {
         <div className="company-logos">
           {companiesData.map((company) => (
             <div key={company.id} className="company-logo">
-              <p>{company.name}</p>
+              <a href={company.url} target="_blank" rel="noopener noreferrer">{company.name} </a>
             </div>
           ))}
         </div>
@@ -60,12 +69,7 @@ function Home({isAuthenticated}) {
           <h2>Success Stories</h2>
         </div>
         <div className="testimonial-cards">
-          {testimonialsData.map((testimonial) => (
-            <div key={testimonial.id} className="testimonial-card">
-              <p className="testimonial-name"><IoPerson  color='black'  /> {testimonial.name}</p>
-              <p className='testimonial-comments'>{testimonial.quote}</p>
-            </div>
-          ))}
+          <Carousel items={testimonialsData} />
         </div>
       </section>
 
