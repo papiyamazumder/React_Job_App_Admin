@@ -213,17 +213,17 @@
   ],
   "profiles": [
     {
-      "id": "1850",
+      "id": "24f4",
       "basicDetails": {
         "profilePhoto": {},
-        "fullname": "Riki Naik",
+        "fullname": "Ranjita Naik",
         "gender": "Female",
         "email": "riki@gmail.com",
-        "address": "2258,shettikere,durgakeri,honnavara",
-        "city": "Honnavar",
+        "address": "#21,Jayanagar 4th Block",
+        "city": "Bangalore",
         "state": "Karnataka",
-        "mobileNumber": "0843195526",
-        "previewUrl": "blob:http://localhost:3000/528a5078-577e-4161-b8e5-a26add825fc1"
+        "mobileNumber": "9876543210",
+        "previewUrl": "blob:http://localhost:3000/cb1d06cd-15d3-4107-b974-ad1a79bd70c6"
       },
       "educationDetails": {
         "coursename": "B.Tech/B.E",
@@ -243,95 +243,11 @@
         "projecturl": ""
       },
       "certifications": {
-        "certificationname": "",
-        "certificateurl": ""
-      },
-      "experience": {
-        "companyname": "",
-        "designation": "",
-        "totalExperienceMonths": "",
-        "totalExperienceYears": "",
-        "workdescription": "",
-        "typeofexperience": ""
-      }
-    },
-    {
-      "id": "1d84",
-      "basicDetails": {
-        "profilePhoto": "C:\\fakepath\\Leave application.png",
-        "fullname": "Ran Nath",
-        "gender": "Male",
-        "email": "ram@gmail.com",
-        "address": "2258,shettikere,durgakeri,honnavara",
-        "city": "Honnavar",
-        "state": "Gujarat",
-        "mobileNumber": "0987654321",
-        "previewUrl": null
-      },
-      "educationDetails": {
-        "coursename": "BCA",
-        "specialization": "Information Science and Engineering",
-        "collegename": "Dayananda Sagar College of Engineering",
-        "cgpa": "9",
-        "previewUrl": null
-      },
-      "skills": {
-        "skills": "C, Java, C#, React",
-        "previewUrl": null
-      },
-      "projects": {
-        "projectname": "",
-        "projectdetails": "",
-        "projectskills": "",
-        "projecturl": ""
-      },
-      "certifications": {
-        "certificationname": "",
-        "certificateurl": ""
-      },
-      "experience": {
-        "companyname": "",
-        "designation": "",
-        "totalExperienceMonths": "",
-        "totalExperienceYears": "",
-        "workdescription": "",
-        "typeofexperience": ""
-      }
-    },
-    {
-      "id": "714c",
-      "basicDetails": {
-        "profilePhoto": {},
-        "fullname": "Manvith",
-        "gender": "Female",
-        "email": "man@gmail.com",
-        "address": "Kolar ,Bengaluru",
-        "city": "Mulbagal",
-        "state": "Karnataka",
-        "mobileNumber": "0897896543",
-        "previewUrl": "blob:http://localhost:3000/89e9c94b-b73f-41ff-b960-4239497e51ca"
-      },
-      "educationDetails": {
-        "coursename": "B.Tech/B.E",
-        "specialization": "Inforamtion Science and Engineering",
-        "collegename": "Dayanada Sagar Academy of Technologu",
-        "cgpa": "8.6",
-        "previewUrl": null
-      },
-      "skills": {
-        "skills": "C#, Java, Html",
-        "previewUrl": null
-      },
-      "projects": {
-        "projectname": "",
-        "projectdetails": "",
-        "projectskills": "",
-        "projecturl": ""
-      },
-      "certifications": {
-        "certificationname": "",
+        "certificationname": "React Beginners",
         "certificateurl": "",
-        "certificatefile": "C:\\fakepath\\Certificate.pdf",
+        "certificatefile": "C:\\fakepath\\Coursera FR63CNSD95G2.pdf",
+        "certificateFileName": "",
+        "certificatePreviewUrl": null,
         "previewUrl": null
       },
       "experience": {
@@ -344,82 +260,25 @@
       },
       "resume": {
         "resumeFile": {},
-        "resumeFileName": "Vandana C_CG_Resume_46344120.pdf",
-        "resumePreviewUrl": "blob:http://localhost:3000/14651ac1-06e6-4786-ae4f-e656976bdf66"
-      },
-      "certification": {
-        "certificatefile": "C:\\fakepath\\Certificate.pdf",
-        "previewUrl": null
+        "resumeFileName": "Ranjita Kiran Naik_Resume.pdf",
+        "resumePreviewUrl": "blob:http://localhost:3000/82de6d18-e4be-4533-a4a2-f70f30d5f5fb"
       }
     }
   ],
   "users": [
     {
-      "id": "5de6",
+      "id": "037e",
       "name": "Riki",
       "email": "riki@gmail.com",
-      "password": "Riki@123"
-    },
-    {
-      "id": "f7ca",
-      "name": "Varun C",
-      "email": "varun@gmail.com",
-      "password": "Varun@123"
-    },
-    {
-      "id": "8d5c",
-      "name": "Ram",
-      "email": "ram@gmail.com",
-      "password": "Ram@1234"
-<<<<<<< HEAD
-    },
-=======
-    }],
-
-  "profiles": [],
-
-  "users": [
->>>>>>> 37d0a82e3957b8ffe7ab95c926134832890c33cd
-    {
-      "id": "b14f",
-      "name": "Manvith",
-      "email": "man@gmail.com",
-      "password": "Man@0880",
+      "password": "Riki@123",
       "role": "user"
-<<<<<<< HEAD
-=======
     },
     {
-      "id": "109a",
-      "name": "Subudhi",
-      "email": "sweta@gmail.com",
-      "password": "Sweta@1234",
+      "id": "1b59",
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "Admin@123",
       "role": "admin"
-    },
-    {
-      "id": "c599",
-      "name": "sweta",
-      "email": "swetasubudhi99@gmail.com",
-      "password": "Swe@1234",
-      "role": "admin"
-    },
-    {
-      "id": "c4dc",
-      "name": "sww",
-      "email": "swe@gmail.com",
-      "password": "Swe@1234",
-      "role": "user"
-
-    },
-    {
-      "id": "1364",
-      "name": "Anu",
-      "email": "anu@gmail.com",
-      "password": "Swe@1234",
-      "role": "admin"
->>>>>>> 37d0a82e3957b8ffe7ab95c926134832890c33cd
     }
-    
   ]
-
-    }
+}
