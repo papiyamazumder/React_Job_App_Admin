@@ -371,13 +371,55 @@
       "name": "Ram",
       "email": "ram@gmail.com",
       "password": "Ram@1234"
+<<<<<<< HEAD
     },
+=======
+    }],
+
+  "profiles": [],
+
+  "users": [
+>>>>>>> 37d0a82e3957b8ffe7ab95c926134832890c33cd
     {
       "id": "b14f",
       "name": "Manvith",
       "email": "man@gmail.com",
       "password": "Man@0880",
       "role": "user"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "id": "109a",
+      "name": "Subudhi",
+      "email": "sweta@gmail.com",
+      "password": "Sweta@1234",
+      "role": "admin"
+    },
+    {
+      "id": "c599",
+      "name": "sweta",
+      "email": "swetasubudhi99@gmail.com",
+      "password": "Swe@1234",
+      "role": "admin"
+    },
+    {
+      "id": "c4dc",
+      "name": "sww",
+      "email": "swe@gmail.com",
+      "password": "Swe@1234",
+      "role": "user"
+
+    },
+    {
+      "id": "1364",
+      "name": "Anu",
+      "email": "anu@gmail.com",
+      "password": "Swe@1234",
+      "role": "admin"
+>>>>>>> 37d0a82e3957b8ffe7ab95c926134832890c33cd
     }
+    
   ]
-}
+
+    }
