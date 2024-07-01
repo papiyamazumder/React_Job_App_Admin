@@ -10,10 +10,6 @@ const PostJob = () => {
 
   return (
     <div className="post-job-container">
-      <button className="toggle-button" onClick={handleToggleForm}>
-        +
-      </button>
-      {isFormVisible && (
         <form className="post-job-form">
           <h2>Post a Job</h2>
           <label>
@@ -38,7 +34,6 @@ const PostJob = () => {
           </label>
           <button type="submit">Submit</button>
         </form>
-      )}
     </div>
   );
 };

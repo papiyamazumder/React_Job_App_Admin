@@ -48,6 +48,7 @@ function NavbarLinks() {
       )}
       {!isAuthenticated && (
         <>
+
           <Nav.Link as={Link} to="/login" className="login-box">
             Login
           </Nav.Link>
