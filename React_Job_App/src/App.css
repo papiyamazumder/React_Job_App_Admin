@@ -35,6 +35,16 @@ body {
   align-items: center; /* Center icon vertically */
 }
 
+.nav-link-icons .nav-link-text {
+  margin-left: 8px; /* Space between icon and text */
+  font-size: 16px; /* Adjust font size as needed */
+  color: white; /* Ensure the text color is white */
+}
+
+.nav-link-icons:hover .nav-link-text {
+  color: #ccc; /* Change color on hover if needed */
+}
+
 .login-box,
 .register-box {
   font-size: 14px; /* Adjust the font size as needed */
@@ -72,5 +82,7 @@ body {
 .register-box:hover {
   background: linear-gradient(90deg, #0833df, #001f9f); /* Gradient background on hover */
 }
+
+
 
 
