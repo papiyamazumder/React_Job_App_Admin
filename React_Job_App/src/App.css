@@ -1,3 +1,4 @@
+/* Existing CSS */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +12,7 @@ html, body {
   padding: 0;
 }
 .bg-primary {
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) ;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
 }
 
 body {
@@ -31,14 +32,22 @@ body {
 }
 
 .nav-link-icons {
-  display: flex;
-  align-items: center; /* Center icon vertically */
+  display: inline-block; /* Change display to inline-block */
+  height: 100%; /* Make sure the link takes full height of the navbar */
+  position: relative; /* Set position relative for child elements */
+  vertical-align:bottom;
+  margin-right: 60px;
 }
 
 .nav-link-icons .nav-link-text {
+  position: absolute; /* Use absolute positioning */
+  top: 55%; /* Position 50% from the top */
+  transform: translateY(-50%); /* Center vertically */
   margin-left: 8px; /* Space between icon and text */
   font-size: 16px; /* Adjust font size as needed */
-  color: white; /* Ensure the text color is white */
+  color: white;
+  width: 60px;
+ 
 }
 
 .nav-link-icons:hover .nav-link-text {
@@ -47,15 +56,15 @@ body {
 
 .login-box,
 .register-box {
-  font-size: 14px; /* Adjust the font size as needed */
-  border: 1px solid #ccc; /* Same border style */
-  padding: 10px; /* Same padding */
-  display: inline-block;
-  border-radius: 5px; /* Same border radius */
-  margin-left: 10px; /* Same margin */
+  font-size: 14px;
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  display: block;
+  border-radius: 5px; 
+  margin-left: 10px;
   transition: transform 0.2s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-  text-decoration: none; /* Remove default underline */
-  font-weight: bold; /* Bold text */
+  text-decoration: none; 
+  font-weight: bold;
 }
 
 .login-box {
@@ -70,7 +79,8 @@ body {
 
 .login-box:hover,
 .register-box:hover,
-.nav-link-icons:hover {
+.nav-link-icons:hover
+{
   transform: scale(1.1); /* Zoom in effect */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
 }
@@ -82,7 +92,3 @@ body {
 .register-box:hover {
   background: linear-gradient(90deg, #0833df, #001f9f); /* Gradient background on hover */
 }
-
-
-
-
